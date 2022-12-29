@@ -1,22 +1,26 @@
 import React from "react";
-import start from "../assets/img/Star1.png";
 
-function Card(props) {
+function Card(data) {
+  console.log(data);
   return (
     <div className="card">
-      <img src={props.img} alt="people" className="card-img" />
-      {props.status && (
-        <button className="status-current">{props.status}</button>
+      <img
+        src={`../assets/img/${data.coverImg}`}
+        alt="card"
+        className="card-img"
+      />
+      {data.location && (
+        <button className="status-current">{data.location}</button>
       )}
       <div className="starts">
-        <img src={start} alt="start" className="start-icon" />
-        <span>{props.countStart}</span>
-        <span className="gray">({props.countFeedback}) ● </span>
+        <img src="../assets/img/Star1.png" alt="start" className="start-icon" />
+        <span className="rating">{data.stats.rating}</span>
+        <span className="gray countfb">({data.stats.reviewCount}) ● </span>
         <span className="gray">USA</span>
       </div>
-      <p>{props.title}</p>
+      <p className="card-title">{data.title}</p>
       <p>
-        <span className="bold">From ${props.money} </span>/ person
+        <span className="bold">From ${data.price} </span>/ person
       </p>
     </div>
   );

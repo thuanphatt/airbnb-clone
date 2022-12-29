@@ -1,6 +1,12 @@
 import React from "react";
 
 function Card(data) {
+  let badgeText;
+  if (data.openSpots === 0) {
+    badgeText = "SOLD OUT";
+  } else if (data.location === "Online") {
+    badgeText = "ONLINE";
+  }
   return (
     <div className="card">
       <img
@@ -8,9 +14,7 @@ function Card(data) {
         alt="card"
         className="card-img"
       />
-      {data.location && (
-        <button className="status-current">{data.location}</button>
-      )}
+      {badgeText && <button className="status-current">{badgeText}</button>}
       <div className="starts">
         <img src="../assets/img/Star1.png" alt="start" className="start-icon" />
         <span className="rating">{data.stats.rating}</span>
